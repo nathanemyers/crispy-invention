@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: page
 title: "The World's Fastest Mile Times: A History"
 author: 'Nathan Myers'
 date: 2016-08-20
 catagories: d3
+exclude: true
 ---
 
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
