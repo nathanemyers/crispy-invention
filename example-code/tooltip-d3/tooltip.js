@@ -1,7 +1,7 @@
 /* jshint esnext: true */
 
-var totalWidth = 1000;
-var totalHeight = 600;
+var totalWidth = 700;
+var totalHeight = 400;
 var margin = {
   top: 20,
   bottom: 80,
@@ -30,7 +30,7 @@ function csvParser(d) {
   };
 }
 
-window.ondload = d3.csv('/example-code/panning-d3/top-selling-albums.csv', csvParser, data => buildChart(data));
+window.ondload = d3.csv('/example-code/tooltip-d3/top-selling-albums.csv', csvParser, data => buildChart(data));
 
 function buildChart(topSellingAlbums) {
   let svg = d3.select('.chart-container').append('svg')
@@ -70,7 +70,7 @@ function buildChart(topSellingAlbums) {
     .attr('transform', `translate(${margin.left - padding}, ${margin.top})`)
     .call(yAxis);
 
-  let axisFontSize = 20;
+  let axisFontSize = 16;
   svg.append('text')
     .text('Sales (Millions)')
     .attr('font-size', axisFontSize)
@@ -83,7 +83,7 @@ function buildChart(topSellingAlbums) {
     .attr('transform',`translate(${margin.left + (width / 2)}, ${totalHeight})`);
 
   /*
-   * Tooltip
+   * Tooltip Stuff
    */
   var tip = d3.tip()
     .attr('class', 'tooltip')
@@ -110,31 +110,9 @@ function buildChart(topSellingAlbums) {
       .attr('d', d => d ? "M" + d.join("L") + "Z" : null)
       .on('mouseover', (d) => {
         let bubble = document.getElementById(d.data.id);
-        //TweenMax.fromTo(`#${d.data.id}`, 0.2, {
-          //scale: 1
-        //}, {
-          //ease: Back.easeOut.config(4),
-          //scale: 2 
-        //});
-        //if (d.data.seconds > 300) {
-          //tip.offset([15,0]);
-          //tip.direction('s');
-        //} else if (d.data.year < new moment('January 30 1906', 'MMMM DD YYYY') ) {
-          //tip.offset([0,15]);
-          //tip.direction('e');
-        //} else if (d.data.year > new moment('January 30 2000', 'MMMM DD YYYY')) {
-          //tip.offset([0,-15]);
-          //tip.direction('w');
-        //} else {
-          //tip.direction('n');
-          //tip.offset([-15,0]);
-        //}
         tip.show(d.data, bubble);
       })
     .on('mouseout', (d) => {
-      //TweenMax.to(`#${d.data.id}`, 0.2, {
-        //scale: 1
-      //});
       tip.hide();
     });
 
