@@ -88,7 +88,7 @@ function buildChart(topSellingAlbums) {
   var tip = d3.tip()
     .attr('class', 'tooltip')
     .html(d => `
-    <div class='tooltip-data'>
+    <div>
       ${d.album} - ${d.artist}
     </div>
     `);
@@ -129,7 +129,7 @@ function buildChart(topSellingAlbums) {
           //tip.direction('n');
           //tip.offset([-15,0]);
         //}
-        tip.show(d, bubble);
+        tip.show(d.data, bubble);
       })
     .on('mouseout', (d) => {
       //TweenMax.to(`#${d.data.id}`, 0.2, {
