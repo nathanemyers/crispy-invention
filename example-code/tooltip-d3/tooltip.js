@@ -20,6 +20,14 @@ function* generateId() {
 }
 var gen = generateId();
 
+var tip = d3.tip()
+  .attr('class', 'tooltip')
+  .html(d => `
+    <div>
+      ${d.album} - ${d.artist}
+    </div>
+    `);
+
 function csvParser(d) {
   return {
     id: 'id-' + gen.next().value,
@@ -30,10 +38,13 @@ function csvParser(d) {
   };
 }
 
-window.ondload = d3.csv('/example-code/tooltip-d3/top-selling-albums.csv', csvParser, data => buildChart(data));
+window.ondload = d3.csv('/example-code/tooltip-d3/top-selling-albums.csv', csvParser, data => {
+  buildChart('.chart-container', data, false);
+  buildChart('.chart-container-voronoi', data, true);
+});
 
-function buildChart(topSellingAlbums) {
-  let svg = d3.select('.chart-container').append('svg')
+function buildChart(hostElement, topSellingAlbums, showVoronoi=false) {
+  let svg = d3.select(hostElement).append('svg')
     .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
     .attr('preserveAspectRatio', 'xMinYMin meet');
 
@@ -51,7 +62,7 @@ function buildChart(topSellingAlbums) {
   albums.selectAll('circle')
     .data(topSellingAlbums).enter()
     .append('circle')
-      .attr('id', d => d.id)
+      .attr('id', d => d.id + ( showVoronoi ? 'voronoi' : '') )
       .attr('cx', d => x(d.year))
       .attr('cy', d => y(d.sales))
       .attr('r', 3);
@@ -85,14 +96,6 @@ function buildChart(topSellingAlbums) {
   /*
    * Tooltip Stuff
    */
-  var tip = d3.tip()
-    .attr('class', 'tooltip')
-    .html(d => `
-    <div>
-      ${d.album} - ${d.artist}
-    </div>
-    `);
-
   svg.call(tip);
   let voronoi = d3.voronoi()
     .x(d => x(d.year))
@@ -104,12 +107,12 @@ function buildChart(topSellingAlbums) {
     .enter().append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
       .attr('fill', 'none')
-      .attr('stroke', 'none')
+      .attr('stroke', showVoronoi ? 'gold' : 'none')
       .attr('pointer-events', 'all')
     .append('path')
       .attr('d', d => d ? "M" + d.join("L") + "Z" : null)
       .on('mouseover', (d) => {
-        let bubble = document.getElementById(d.data.id);
+        let bubble = document.getElementById(d.data.id + ( showVoronoi ? 'voronoi' : ''));
         tip.show(d.data, bubble);
       })
     .on('mouseout', (d) => {
