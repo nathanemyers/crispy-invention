@@ -3,7 +3,7 @@ from fabric.api import local, put, lcd, run
 import secret
 
 def serve():
-    run('jekyll serve')
+    local('jekyll serve')
 
 def build():
     local('jekyll build')
