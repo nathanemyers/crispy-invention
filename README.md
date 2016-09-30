@@ -1,5 +1,7 @@
 ## To Run:
 
 ```
-jekyll serve
+npm start
 ```
+
+:fire: :fire: :fire:
