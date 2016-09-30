@@ -24,3 +24,6 @@ github_username:  nathanemyers
 # Build settings
 markdown: kramdown
 theme: minima
+
+gems:
+  - jemoji
