@@ -12,12 +12,15 @@ Unfortunately, everytime I tried to get something set up with gulp I would run i
 
 So I've been looking into using `webpack` to solve my compilation needs.
 
-I'd like to be able to 
+I want to:
  - Use `es2015` `import` statements to specify my external requirements
  - Have an easily launchable development server built into the project
  - Transpile `es2015` -> plain javascript
  - Transpile `scss` -> `css`
 
+# Some excellent references for gettings started with Webpack
+ - [Beginner's Guide to Webpack](https://medium.com/@dabit3/beginner-s-guide-to-webpack-b1f1a3638460#.ru1lvt8h9)
+ - [Webpack: The Confusing Parts](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.wqahi757o)
 
 
 ## Installation
@@ -53,4 +56,24 @@ module.exports = {
 ```
 
 ## Loaders
+
+## Dev Server
+
+First, you're going to need to install the dev server separetely
+
+```
+npm install webpack-dev-server
+```
+
+It's a good idea to integrate the dev server into your npm config so you can easily add command line arguements
+
+# package.json
+``` json
+...
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "webpack-dev-server --content-base dist/"
+},
+...
+```
 
