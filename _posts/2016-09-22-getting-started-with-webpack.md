@@ -13,14 +13,10 @@ Unfortunately, everytime I tried to get something set up with gulp I would run i
 So I've been looking into using `webpack` to solve my compilation needs.
 
 I want to:
- - Use `es2015` `import` statements to specify my external requirements
+ - Use *es2015* `import` statements to specify my external requirements
  - Have an easily launchable development server built into the project
- - Transpile `es2015` -> plain javascript
- - Transpile `scss` -> `css`
-
-# Some excellent references for gettings started with Webpack
- - [Beginner's Guide to Webpack](https://medium.com/@dabit3/beginner-s-guide-to-webpack-b1f1a3638460#.ru1lvt8h9)
- - [Webpack: The Confusing Parts](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.wqahi757o)
+ - Transpile *es2015* -> plain javascript
+ - Transpile *scss* -> *css*
 
 
 ## Installation
@@ -56,6 +52,25 @@ module.exports = {
 ```
 
 ## Loaders
+Loaders are responsible for doing the work transpiling your source to their target languages. In this case we're using the `babel-loader` to compile *es6* to *es5*. Here's an example of the loaders configuration:
+
+``` javascript
+loaders: [
+  {
+    test: /\.js$/,
+    loader: 'babel-loader',
+    query: {
+      presets: ['es2015']
+    }
+  }
+]
+```
+
+ - `test`: Holds the regular expression used to test if this loader or loader chain will be invoked.
+ - `loader`: This is the loader itself. (`npm install babel-loader --save-dev`)
+ - `query`: Pass in arguments to the loader here. (`npm install babel-preset-es2015-webpack --save-dev`)
+
+
 
 ## Dev Server
 
@@ -76,4 +91,8 @@ It's a good idea to integrate the dev server into your npm config so you can eas
 },
 ...
 ```
+
+## Further Reading
+ - [Beginner's Guide to Webpack](https://medium.com/@dabit3/beginner-s-guide-to-webpack-b1f1a3638460#.ru1lvt8h9)
+ - [Webpack: The Confusing Parts](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.wqahi757o)
 
