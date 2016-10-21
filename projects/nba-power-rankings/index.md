@@ -2,12 +2,13 @@
 layout: page
 title: NBA Power Rankings
 author: Nathan Myers
-date: 2016-8-20
+date: 2016-10-20
 catagories: d3 NBA
 exclude: true
 ---
 
 <script src="bundle.js"></script>
+<script src="https://use.fontawesome.com/aacf4cc03e.js"></script> 
 
 <div id="spinner-container">
   <div class="sk-cube-grid">
@@ -25,7 +26,6 @@ exclude: true
 
 <div class="power-rankings page-segment">
   <div class="chart">
-    <!--d3.js will insert code here-->
   </div>
   <div class="panning-controls">
     <span id="left-button" class="button">
@@ -38,4 +38,5 @@ exclude: true
 
 
 </div>
+
 Source: [ESPN](http://espn.go.com/nba/powerrankings) 
