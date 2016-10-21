@@ -1,9 +1,9 @@
 ---
 layout: page
-title: NBA Power Rankings
-author: Nathan Myers
+title: "NBA Power Rankings"
+author: "Nathan Myers"
 date: 2016-10-20
-catagories: d3 NBA
+catagories: d3
 exclude: true
 ---
 
@@ -35,7 +35,6 @@ exclude: true
       <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
     </span>
   </div>
-
 
 </div>
 
