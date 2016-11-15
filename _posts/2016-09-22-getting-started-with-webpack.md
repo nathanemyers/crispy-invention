@@ -3,7 +3,7 @@ layout: post
 title:  "Getting Started with Webpack"
 date:   2016-09-22 
 categories: webpack
-published: false
+published: true
 ---
 
 I've been trying to find the right javascript build chain for a few days now. I started with `gulp`, since the idea of just piping together a bunch of single-task transforms on my source code sounded like it should be super easy and fun, right?
@@ -17,7 +17,6 @@ I want to:
  - Have an easily launchable development server built into the project
  - Transpile *es2015* -> plain javascript
  - Transpile *scss* -> *css*
-
 
 ## Installation
 
@@ -69,7 +68,6 @@ loaders: [
  - `test`: Holds the regular expression used to test if this loader or loader chain will be invoked.
  - `loader`: This is the loader itself. (`npm install babel-loader --save-dev`)
  - `query`: Pass in arguments to the loader here. (`npm install babel-preset-es2015-webpack --save-dev`)
-
 
 
 ## Dev Server
