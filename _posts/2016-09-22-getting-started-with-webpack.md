@@ -20,17 +20,18 @@ I want to:
 
 ## Installation
 
-``` bash
+{% highlight bash %}
 $ npm init
 $ npm install --save-dev webpack babel-core babel-preset-es2015-webpack
-```
+{% endhighlight %}
 
 ## The Absolute Basics
 
 All right. Here we go. The following configuration will take your source code in `src/main.js` and transpile it to `bundle.js`.
 
-# webpack.config.js
-``` javascript
+{% highlight javascript %}
+// webpack.config.js
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -48,12 +49,12 @@ module.exports = {
     ]
   }
 };
-```
+{% endhighlight %}
 
 ## Loaders
 Loaders are responsible for doing the work transpiling your source to their target languages. In this case we're using the `babel-loader` to compile *es6* to *es5*. Here's an example of the loaders configuration:
 
-``` javascript
+{% highlight javascript %}
 loaders: [
   {
     test: /\.js$/,
@@ -63,7 +64,7 @@ loaders: [
     }
   }
 ]
-```
+{% endhighlight %}
 
  - `test`: Holds the regular expression used to test if this loader or loader chain will be invoked.
  - `loader`: This is the loader itself. (`npm install babel-loader --save-dev`)
@@ -80,15 +81,15 @@ npm install webpack-dev-server
 
 It's a good idea to integrate the dev server into your npm config so you can easily add command line arguements
 
+{% highlight json %}
 # package.json
-``` json
 ...
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1",
   "start": "webpack-dev-server --content-base dist/"
 },
 ...
-```
+{% endhighlight %}
 
 ## Further Reading
  - [Beginner's Guide to Webpack](https://medium.com/@dabit3/beginner-s-guide-to-webpack-b1f1a3638460#.ru1lvt8h9)
