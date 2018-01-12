@@ -11,4 +11,4 @@ exclude: true
 
 <div class="container"></div>
 
-<script src="bundle.js"></script>
+<script src="virtual-dm-screen-1.0.0.js"></script>
